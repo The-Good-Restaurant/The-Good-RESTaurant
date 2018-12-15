@@ -1,23 +1,15 @@
-// Dependencies
-var http = require("http");
+var path = require("path")
 
-var PORT = 7500;
-
-var server = http.createServer(handleRequest);
-
-function handleRequest(req, res) {
-  var path = req.url
-  displayPage(path, res)
-}
-
-function displayPage(url, res) {
-    fs.readFile(__dirname + url, function (err, data) {
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.end(data);
+module.exports = function (app) {
+    app.get("/home", function (req, res) {
+        res.sendFile(path.join(__dirname, "home.html"))
     });
+
+    app.get("/reservations", function (req, res) {
+        res.sendFile(path.join(__dirname, "reservations.html"))
+    })
+
+    app.get("/tables", function (req, res) {
+        res.sendFile(path.join(__dirname, "tables.html"))
+    })
 }
-
-
-server.listen(PORT, function () {
-  console.log("Server is listening on: http://localhost:" + PORT + "/index.html");
-});
