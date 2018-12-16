@@ -1,0 +1,12 @@
+body {
+    width: 960px;
+    margin: 0 auto;
+}
+.jumbotron{
+    text-align: center;
+}
+form {
+    border: 1px black  solid;
+    border-radius: 5px;
+    padding: 10px;
+}
